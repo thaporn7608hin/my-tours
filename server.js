@@ -4,7 +4,7 @@ dotenv.config({ path: './config.env' })
 
 const app = require('./app');
 
-const DB = process.env.DATABASE
+const DB = "mongodb+srv://PaineKung:aP7aoLvLcEHa9KeP@cluster0.mnv90n8.mongodb.net/natours?retryWrites=true&w=majority"
 
 const connect = async () => {
   await mongoose.connect(DB)
@@ -15,7 +15,7 @@ connect().then(() => console.log("ok"))
 
 
 const port = 3000; 
-const server = app.listen(port, '0.0.0.0', () => {
+const server = app.listen(port,() => {
   console.log(`Open on port ${port} success!! >>>>`);
 }) 
 
