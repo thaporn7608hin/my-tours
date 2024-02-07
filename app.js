@@ -7,7 +7,6 @@ const ExpressMongoSanitize = require('express-mongo-sanitize')
 const xss = require("xss-clean")
 const hpp = require('hpp');
 const compression = require("compression")
-const app = express();
 const tourRouter = require('./routes/tourRoutes'); 
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require("./routes/reviewRoutes")
@@ -19,6 +18,8 @@ const cors = require("cors")
 
 const globalErrorHandle = require("./controller/errorController");
 
+const app = express();
+
 app.set('view engine','pug')
 app.set('views',path.join(__dirname,'views')) 
 
@@ -29,16 +30,17 @@ const limiter = rateLimit({
 
 }) 
 
+app.use(limiter)
+
 app.use(cors())
+
+
+
+app.use(helmet());
 
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({extended:true,limit:"10kb"}))
 app.use(cookieParser())
-
-app.use(limiter)
-
-
-app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
 
 // Data sanitization against NoSQL query injection
 app.use(ExpressMongoSanitize())
