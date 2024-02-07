@@ -15,7 +15,7 @@ connect().then(() => console.log("ok"))
 
 
 const port = 3000; 
-const server = app.listen(port, 'localhost', () => {
+const server = app.listen(port, '0.0.0.0', () => {
   console.log(`Open on port ${port} success!! >>>>`);
 }) 
 
