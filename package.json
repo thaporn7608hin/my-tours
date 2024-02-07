@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Learning node, express and mongoDB",
   "main": "app.js",
-  "type": "commonjs",
+
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
@@ -51,5 +51,8 @@
   },
   "devDependencies": {
     "eslint": "^8.55.0"
+  },
+  "engines": {
+    "node": "^20"
   }
 }
