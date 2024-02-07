@@ -3,7 +3,6 @@ const {
     htmlToText
 } = require("html-to-text")
 const nodemailer = require("nodemailer")
-const sgMail = require('@sendgrid/mail');
 const pug = require("pug")
 
 module.exports = class Email {
