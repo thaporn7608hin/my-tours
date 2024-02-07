@@ -4,13 +4,16 @@ dotenv.config({ path: './config.env' })
 
 const app = require('./app');
 
-const DB = process.env.DATABASE.replace('<PASSWORDS>', process.env.PASSWORDS);
+const DB = process.env.DATABASE
 
-(async () => {
+const connect = async () => {
   await mongoose.connect(DB)
-})().then(() => console.log("connect success")).catch("some thing not connect")
-
+}
+connect().then(() => console.log("ok"))
+.catch((err) => console.log(err))
  
+
+
 const port = 3000; 
 const server = app.listen(port, 'localhost', () => {
   console.log(`Open on port ${port} success!! >>>>`);
