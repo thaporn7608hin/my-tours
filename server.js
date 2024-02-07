@@ -14,7 +14,7 @@ connect().then(() => console.log("ok"))
  
 
 
-const port = 3001; 
+const port = process.env.PORT || 5001 
 const server = app.listen(port,() => {
   console.log(`Open on port ${port} success!! >>>>`);
 }) 
