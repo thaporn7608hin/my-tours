@@ -24,7 +24,7 @@ app.set('view engine','pug')
 app.set('views',path.join(__dirname,'views')) 
 
 const limiter = rateLimit({
-  limit:1055,
+  limit:1055555,
   windowMs: 15 * 60 * 1000,
   message:"To many request from this ip, please try again in an hours"
 
