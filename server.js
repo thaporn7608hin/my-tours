@@ -6,8 +6,8 @@ const app = require('./app');
 
 const DB = process.env.DATABASE
 
-const connect = async () => {
-  await mongoose.connect(DB)
+const connect = async () => { 
+  await mongoose.connect(DB) 
 }
 connect().then(() => console.log("ok"))
 .catch((err) => console.log(err))
@@ -19,7 +19,7 @@ const server = app.listen(port,() => {
   console.log(`Open on port ${port} success!! >>>>`);
 }) 
 
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', err => { 
   console.log('UNHANDLED REJECTION! 💥 Shutting down...');
   console.log(err.name, err.message);
   server.close(() => {

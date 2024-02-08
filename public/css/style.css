@@ -1329,3 +1329,141 @@ body {
   /* Add other styles as needed */
   border: 1px solid #55c57a !important;
 }
+
+@media screen and (max-width: 450px) {
+  body {
+    padding: 0;
+    height: auto;
+    
+  }
+  .header{
+    flex-direction: row;
+    padding: 15px;
+    justify-content: space-between;
+  }
+  .header__logo{
+    margin-bottom: 0;
+  }
+  .nav--user{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+    flex: none;
+  }
+  .nav__el:not(:last-child){
+    margin-bottom: 0;
+  }
+  .nav__el{
+    margin-top: 5px;
+  }
+  .nav__el--cta{
+    padding: 3px 7px;
+    margin-bottom: 5px;
+  }
+  .nav__el, .nav__el:link, .nav__el:visited{
+    font-size: 15px;
+  }
+  .nav__el span{
+    display: none;
+  }
+  .nav__user-img{
+    margin-right: 0;
+  }
+
+  .card-container{
+    display: block;
+  }
+  .card{
+    margin-bottom: 3.5rem;
+  }
+   .heading-primary{
+    width: auto;
+    font-size: 2.4rem;
+  }
+  .heading-primary span{
+    line-height: 2;
+  }
+
+  .section-header{
+    height: 60vw;
+  }
+  .heading-tertirary{
+    font-size: 2,4rem;
+  }
+  .heading-tertirary span{
+    line-height: 1.9;
+  }
+  .heading-box__detail{
+    font-size: 1rem;
+  }
+
+  .main{
+    padding: 3.5rem 3.5rem;
+  }
+  .heading-box__group{
+    width: 300px;
+  }
+  
+  .section-description{
+    flex-direction: column;
+  }
+  .heading-secondary.ma-bt-lg{
+    display: flex;
+    justify-content: center;
+  }
+  .overview-box__detail{
+    position: relative;
+  }
+  .overview-box__text{
+    position: absolute;
+    right: 0;
+  }
+  .section-pictures{
+    margin-top: 10px;
+  }
+ 
+ .cta{
+  position: relative;
+  width: 100%;
+  margin:none;
+  overflow: none;
+  background-color:none;
+  border-radius: none;
+  -webkit-box-shadow: 0 3rem 8rem 0.5rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3rem 8rem 0.5rem rgba(0, 0, 0, 0.15);
+  min-height: 100vh;
+  padding: 0%;
+ }
+ .cta__img{
+  height: 15rem;
+  width: 15rem;
+  position: absolute;
+  left: 26px;
+  top: -10%;
+  border-radius: 50%;
+  -webkit-box-shadow: 1rem 0.5rem 3rem rgba(0, 0, 0, 0.15);
+  box-shadow: 1rem 0.5rem 3rem rgba(0, 0, 0, 0.15);
+  margin: auto;
+  right: 0;
+  bottom: 0;
+ }
+ .cta__content{
+  position: absolute;
+  top: 50%;
+  padding: 40px;
+  display: block;
+  text-align: center;
+ }
+
+ .section-cta{
+  padding-top: calc(3rem + var(--section-rotate));
+ }
+ .cta__text{
+  margin: 15px 0;
+ }
+ .footer__nav{
+  flex-wrap: wrap;
+  justify-content: center;
+ }
+}
