@@ -4,7 +4,7 @@ dotenv.config({ path: './config.env' })
 
 const app = require('./app');
 
-const DB = "mongodb+srv://PaineKung:aP7aoLvLcEHa9KeP@cluster0.mnv90n8.mongodb.net/natours?retryWrites=true&w=majority"
+const DB = process.env.DATABASE
 
 const connect = async () => {
   await mongoose.connect(DB)
