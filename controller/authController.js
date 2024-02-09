@@ -17,14 +17,14 @@ const signToken = id => {
 const createSentToken = (user,statusCode,res) => {
     const token = signToken(user.id)
 
-    const cookieiOption = {
-        expires:new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
-        httpOnly:true
-    }
 
-    if (process.env.NODE_ENV === "production") cookieiOption.secure = true
-
-    res.cookie('jwt',token,cookieiOption)
+    res.cookie('jwt',token,{
+        expires: new Date(
+          Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+        ),
+        httpOnly: true,
+        secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
+      })
 
     user.password = undefined
 
@@ -41,7 +41,7 @@ exports.singup = catchAsync(async (req,res,next) => {
     const newUser = await User.create(req.body)
     const url = `${req.protocol}://${req.get("host")}/me`
     await new Email(newUser,url).sendWelcome()
-    createSentToken(newUser,200,res)
+    createSentToken(newUser,200,res,req)
 })
 exports.login = catchAsync(async (req,res,next) => {
     const {email,password} = req.body
@@ -59,7 +59,7 @@ exports.login = catchAsync(async (req,res,next) => {
   }
 
 
-    createSentToken(user,200,res)
+    createSentToken(user,200,res,req)
 })
 
 exports.logout = (req,res,next) => {
