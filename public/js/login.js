@@ -42,6 +42,48 @@ export const login = async (email,password) => {
     }
 }
 
+export const signup = async (name,email,password,passwordConfirm) => {
+    try {
+        const res = await axios({
+            method:"POST",
+            url:"/api/v1/users/signup",
+            data:{
+                name,
+                email,
+                password,
+                passwordConfirm
+            }
+        })
+
+        if (res.data.status === 'success'){
+            swal.fire({
+                title: "<h1 style='font-size: 24px;'>Success fully</h1>",
+                html: "<div style='font-size: 18px;'>Login success fully</div>",
+                icon: "success",
+                showConfirmButton:false,
+                showCancelButton:false,
+                
+            });
+
+            window.location.assign("/login")
+        }
+        
+    } catch (error) {
+        swal.fire({
+            title: "<h1 style='font-size: 24px;'>Error</h1>",
+            html: `<div style='font-size: 18px;'>${error.response.data.message}</div>`,
+            icon: "error",
+            showCancelButton:false,
+            showConfirmButton:true,
+            dangerMode: true,
+            customClass: {
+                confirmButton: 'custom-confirm-button',
+                cancelButton: 'custom-cancel-button'
+            }
+        });
+    }
+}
+
 export const logout = async () => {
    try {
     const res = await axios({

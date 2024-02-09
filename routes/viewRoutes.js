@@ -30,6 +30,7 @@ router.use((req, res, next) => {
 router.get("/",bookingController.createBookingCheckout,authController.isLoggedIn,viewsController.getOverview)
 router.get("/tour/:name",authController.isLoggedIn,authController.protect,viewsController.getTour)
 router.get("/login",authController.isLoggedIn,viewsController.getLoginFrom)
+router.get("/signup",authController.isLoggedIn,viewsController.getSignupForm)
 router.get("/me",authController.protect,viewsController.getAccount)
 router.get("/my-tours",authController.protect,viewsController.getMyTour)
 
