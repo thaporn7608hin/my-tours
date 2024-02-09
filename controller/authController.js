@@ -17,14 +17,14 @@ const signToken = id => {
 const createSentToken = (user,statusCode,res,req) => {
     const token = signToken(user.id)
 
-
-    res.cookie('jwt',token,{
-        expires: new Date(
-          Date.now() + process.env.JWT_EXPIRES_IN * 24 * 60 * 60 * 1000
-        ),
-        httpOnly: true,
+    const cookieiOption = {
+        expires:new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
+        httpOnly:true,
         secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
-      })
+    }
+
+
+    res.cookie('jwt',token,cookieiOption)
 
     user.password = undefined
 
@@ -187,7 +187,7 @@ exports.resetPassword = catchAsync(async (req,res,next) => {
     user.passwordResetExpired = undefined
     await user.save()
 
-    createSentToken(user,200,res)
+    createSentToken(user,200,res,req)
 
 })
 
