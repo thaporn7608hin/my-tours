@@ -74,4 +74,18 @@ if (btnSignup){
         signup(name,email,password,passwordConfirm)
     })
 }
+
+const check = document.getElementById("menu-toggle")
+if (check){
+    check.checked = false
+    check.addEventListener("change", e => { // Adds an event listener for "change" event
+        if (e.target.checked) { // Checks if the checkbox is checked
+            const dom = document.querySelector(".user-view__menu"); // Selects the element with class "user-view__menu"
+            dom.style.transform = "translateX(0%)"; // Applies a transformation to move the element out of view
+        } else{
+            const dom = document.querySelector(".user-view__menu"); // Selects the element with class "user-view__menu"
+            dom.style.transform = "translateX(-100%)"; 
+        }
+    });
+}
  

@@ -11,6 +11,10 @@ mixin navItem(link,text,icon,active)
 block content
     main.main
         .user-view
+            .position
+                input#menu-toggle(type="checkbox")
+                label.menu-button-container(for="menu-toggle")
+                    div.menu-button
             nav.user-view__menu
                 ul.side-nav
                     +navItem("#","Settings","settings",true)
