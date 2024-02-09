@@ -1423,11 +1423,7 @@ body {
     justify-content: center;
   }
   .overview-box__detail{
-    position: relative;
-  }
-  .overview-box__text{
-    position: absolute;
-    right: 0;
+    justify-content: space-between;
   }
   .section-pictures{
     margin-top: 10px;
