@@ -14,7 +14,7 @@ const signToken = id => {
     return token
 }
 
-const createSentToken = (user,statusCode,res) => {
+const createSentToken = (user,statusCode,res,req) => {
     const token = signToken(user.id)
 
 
