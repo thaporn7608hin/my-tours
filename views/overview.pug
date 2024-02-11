@@ -5,7 +5,7 @@ block content
     main.main
       .card-container
       
-        each tour in tours
+        each tour,index in tours
           .card
             .card__header
               .card__picture
@@ -44,8 +44,9 @@ block content
                 | 
                 span.card__footer-text= `rating (${tour.ratingsQuantity})`
               a.btn.btn--green.btn--small(href=`/tour/${tour.name}`) Details
+
   else
-   main.main
+   main.main 
     .card-container
       div(style="grid-column: 2 / 3;") 
         h1(style="display:flex; justify-content:center; font-size:50px;") Thank you   

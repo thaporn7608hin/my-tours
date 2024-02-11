@@ -17,7 +17,32 @@
     </nav>
   </header>
   <!-- CONTENT-->
-  <h1>This is a placeholder heading</h1>
+  <main class="main">
+    <div class="login-form">
+      <h2 class="heading-secondary ma-bt-lg">Signup into account</h2>
+      <form class="form form--signup">
+        <div class="form__group">
+          <label class="form__label" for="name">Name</label>
+          <input class="form__input" id="name" type="text" placeholder="Paine Kung" required>
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="email">Email address</label>
+          <input class="form__input" id="email" type="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form__group ma-bt-md">
+          <label class="form__label" for="password">Password</label>
+          <input class="form__input" id="password" type="password" placeholder="••••••••" required minlength="8">
+        </div>
+        <div class="form__group ma-bt-md">
+          <label class="form__label" for="password">PasswordConfirm</label>
+          <input class="form__input" id="passwordConfirm" type="password" placeholder="••••••••" required minlength="8">
+        </div>
+        <div class="form__group">
+          <button class="btn btn--green">Login</button>
+        </div>
+      </form>
+    </div>
+  </main>
   <!-- FOOTER-->
   <footer class="footer"> 
     <div class="footer__logo"> <img src="/img/logo-green.png" alt=""></div>

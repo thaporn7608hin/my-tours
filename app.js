@@ -20,7 +20,7 @@ const globalErrorHandle = require("./controller/errorController");
 
 const app = express();
 
-app.enable('trust proxy');
+// app.enable('trust proxy');
 
 app.set('view engine','pug')
 app.set('views',path.join(__dirname,'views')) 
@@ -28,8 +28,8 @@ app.set('views',path.join(__dirname,'views'))
 const limiter = rateLimit({
   limit:1055555,
   windowMs: 15 * 60 * 1000,
-  message:"To many request from this ip, please try again in an hours"
-
+  message:"To many request from this ip, please try again in an hours" 
+ 
 }) 
 
 app.use(limiter)

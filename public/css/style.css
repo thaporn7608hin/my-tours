@@ -793,7 +793,19 @@ body {
   margin: 0 auto;
   padding: 0 8rem;
 }
-
+.user-view__form-container.my-tour{
+  padding: 0;
+}
+.card-container.mytour{
+  grid-template-columns: repeat(2,1fr);
+  gap: 3rem;
+}
+.card-container.mytour .card:last-child{
+  margin-bottom: 0;
+}
+.main.my-tour{
+  padding: 4rem 3rem;
+}
 .footer {
   background-color: #f7f7f7;
   padding: 6rem 4rem 3rem 4rem;
@@ -1340,6 +1352,19 @@ body {
     height: auto;
     
   }
+  .user-view.mytour{
+    background-color: #f7f7f7 !important;
+  }
+  .main.my-tour {
+    padding: 1rem 1rem 0 1rem;
+}
+  #font h3{
+    font-size: 11px;
+  }
+  .bill-check-complete p{
+    font-weight: bold;
+    font-size: 10px;
+  }
   .position{
     display: block;
     z-index: 10;
@@ -1408,6 +1433,7 @@ body {
   }
   .heading-tertirary{
     font-size: 2,4rem;
+    z-index: revert-layer;
   }
   .heading-tertirary span{
     line-height: 1.9;
@@ -1462,6 +1488,7 @@ body {
   right: 0;
   bottom: 0;
  }
+ 
  .cta__content{
   position: absolute;
   top: 50%;
@@ -1486,6 +1513,7 @@ body {
   width: 100px;
   height: 100px;
 }
+
 .menu {
   display: flex;
   flex-direction: row;
@@ -1611,7 +1639,8 @@ body {
 }
 
 .user-view__content {
-  padding: 7rem 0;
+  padding-top: 6rem ;
+  padding-bottom: 1rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -1629,4 +1658,63 @@ body {
 .btn--small{
   width: 100%;
 }
+}
+.checked {
+  color: orange;
+}
+.form-con{
+  text-align: center;
+}
+.form-con h2 {
+  font-size: 25px;
+}
+#fa {
+  font-size: 25px;
+  margin: 0 6px;
+}
+.checked{
+  color:#20bf6b;
+}
+.heading-secondary{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.reviews__card.con{
+  width: 100%;
+}
+
+.bill-card{
+  background-color:#f7f7f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: inherit;
+  padding: 1.25rem 1.75rem;
+  border: none;
+  width: 100%;
+  background-color: #fff;
+  background-color: #f2f2f2;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+.bill-card-name h3{
+  color: #20bf6b;
+  font-size: 16px;
+}
+
+.bill-check-complete p{
+  font-weight: bold;
+}
+.unchecked{
+  color: red;
 }

@@ -27,18 +27,25 @@ exports.updateOne = Model => catchAsync(async (req,res,next)=> {
   }
 
   res.status(200).json({
-    status:"update success",
+    status:"success",
     data:{
       tour
     }
   })
 })
 
-exports.createOne = Modle => catchAsync(async (req,res) => {
-  const doc = await Modle.create(req.body)
+exports.createOne = Modle => catchAsync(async (req,res,next) => {
+  if (req.isTour) {
+    return res.status(200).json({
+      status:"replete",
+      data:null
+    })
+  }
 
+  const doc = await Modle.create(req.body)
+  console.log("body = ",req.body)
   res.status(200).json({
-    status:"create success",
+    status:"success",
     data:{
       doc:doc
     }

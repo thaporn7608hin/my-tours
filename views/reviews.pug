@@ -1,0 +1,22 @@
+extends base
+
+block content
+    main.main
+        .login-form
+            h2.heading-secondary.ma-bt-lg Reviews now!!
+            form.form.form--review
+                .form-con
+                    each i in [1, 2, 3, 4, 5]
+                        //- Use interpolation correctly for ID attribute
+                        //- Wrap `i` with `#{}` to perform interpolation
+                        input(style='display:none;' class="ch" id=`review${i}` type='checkbox')
+                        //- Use interpolation correctly for the `for` attribute
+                        //- Wrap `i` with `#{}` to perform interpolation
+                        label.fa.fa-star#fa(for=`review${i}`)
+                .form__group
+                    input#name.form__input(type='text', style='display:none;' , placeholder='0', required, disabled, name=`${tourId}`)
+                .form__group
+                    input#reviews.form__input(type='text',  , placeholder='it very good!', required)
+
+                .form__group(style="text-align: center;")
+                    button.btn.btn--green reviews

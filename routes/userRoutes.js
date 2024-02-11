@@ -5,7 +5,7 @@ const authCotroller = require("../controller/authController")
 const router = express.Router()
 
 router.post("/signup",authCotroller.singup)
-router.post("/login",authCotroller.login)
+router.post("/login",authCotroller.login) 
 router.get("/logout",authCotroller.logout)
 router.post("/forgotPassword",authCotroller.forgotPassword)
 router.patch("/resetPassword/:token",authCotroller.resetPassword) 

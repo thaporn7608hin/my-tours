@@ -9,13 +9,13 @@ router.use(authController.protect)
 router
     .route('/')
     .get(reviewController.getAllReview)
-    .post(authController.restrictTo("user"),reviewController.setTourUserId,reviewController.createReview)
 
 router
     .route("/:id")
     .get(reviewController.getReview)
     .delete(authController.restrictTo("user","admin"),reviewController.deleteReview)
-    .patch(authController.restrictTo("user","admin"),reviewController.updateReview)
+    .patch(authController.restrictTo("user","admin"),reviewController.setTourUserId,reviewController.updateReview)
+    .post(authController.restrictTo("user","admin"),reviewController.setTourUserId,reviewController.createReview)
 
     
 module.exports = router

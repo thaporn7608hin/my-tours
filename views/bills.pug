@@ -1,0 +1,41 @@
+extends base
+
+mixin navItem(link,text,icon,active)
+    li(class=`${active ? 'side-nav--active' : ''}`)
+        a(href=`${link}`)
+            svg
+                use(xlink:href=`img/icons.svg#icon-${icon}`)
+            | #{text}
+
+block content
+    main.main
+        .user-view
+            .position
+                input#menu-toggle(type="checkbox")
+                label.menu-button-container(for="menu-toggle")
+                    div.menu-button
+            nav.user-view__menu
+                ul.side-nav
+                    +navItem("#","Settings","settings",true)
+                    +navItem("/my-tours","My bookings","briefcase")
+                    +navItem("/my-review","My reviews","star")
+                    +navItem("/my-bill","Billing","credit-card")
+            .user-view__content
+                .user-view__form-container
+                    h2.heading-secondary.ma-bt-lg My Bills
+                    each bill in bills
+                        .bill-container
+                            .bill-card
+                                .bill-card-name#font
+                                    h3= bill.tour.name
+                                if bill.paid === true 
+                                    .bill-check-complete 
+                                        p complete
+                                    .bill-icon
+                                       i(class="fa fa-check-square checked" aria-hidden="true")
+                                else
+                                    .bill-check-complete 
+                                        p incomplete
+                                    .bill-icon
+                                        i(class="fa-solid fa-circle-xmark unchecked")
+                                

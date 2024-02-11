@@ -3,6 +3,7 @@ import { login,logout, signup } from "./login";
 import { displayMap } from "./mapBox";
 import { settingUser,updatePassword } from "./settings";
 import { bookTour } from "./stripe";
+import { reviewTour } from "./review";
 const map = document.getElementById("map")
 if (map){
     const location = JSON.parse(map.dataset.locations)
@@ -54,13 +55,60 @@ if(savePassForm){
     }) 
 }
 
-const btnBook = document.getElementById("book-tour")
-if (btnBook){
-    btnBook.addEventListener("click", e => {
+const btnBook1 = document.getElementById("book-tour1")
+if (btnBook1){
+    btnBook1.addEventListener("click", e => {
         const {tourId} = e.target.dataset
         bookTour(tourId)
     })
 }
+const reviewForm = document.querySelector(".form--review");
+const reviewCheckboxes = document.querySelectorAll(".form--review .ch");
+const labelStar = document.querySelectorAll(".fa-star");
+
+if (reviewCheckboxes.length > 0) {
+    let count = 0
+    let coutInput =  document.getElementById("name")
+    let reviewInput = document.getElementById("reviews")
+        reviewCheckboxes.forEach((checkbox, index) => {
+            checkbox.checked = false
+            coutInput.value = 0
+            checkbox.addEventListener("change", function(event) {
+                const isChecked = event.target.checked;
+                console.log("Checkbox checked state:", isChecked);
+                if (isChecked) {
+                    console.log("Checkbox index:", index);
+                    console.log(labelStar[index]);
+                    labelStar[index].className = "fa fa-star checked";
+                    count +=1 // Remove the dot before class names
+                    coutInput.value = count
+                } else {
+                    labelStar[index].className = "fa fa-star"
+                    count -=1
+                    coutInput.value = count
+                    
+                    // If the checkbox is unchecked, you might want to remove the "checked" class
+                    // labelStar[index].classList.remove("checked");
+                }
+                console.log(coutInput.value)
+                
+            });
+        });
+    
+        reviewForm.addEventListener("submit", e => {
+            e.preventDefault()
+            const reviewText = reviewInput.value
+            const tourId_ =  coutInput.name
+            const countTotal =  coutInput.value
+            reviewTour(reviewText,tourId_,countTotal)
+        })
+} else {
+    console.error("No review checkboxes found.");
+}
+
+
+
+
 
 const btnSignup = document.querySelector(".form--signup")
 if (btnSignup){

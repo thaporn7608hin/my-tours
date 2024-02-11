@@ -1,6 +1,5 @@
 const mongoose = require("mongoose")
 const Tour = require("./tourModel")
-
 const reviewSchema = new mongoose.Schema(
     {
         review:{
@@ -19,7 +18,7 @@ const reviewSchema = new mongoose.Schema(
         tour:{
             type:mongoose.Schema.ObjectId,
             ref:"tour",
-            required:[true,"Review must belong to a tour."]
+            required:[true,"Review must belong to a tour."],
         },
         user:{
             type:mongoose.Schema.ObjectId,
@@ -75,7 +74,16 @@ reviewSchema.pre(/^find/,function(next){
         select:"name photo"
     })
     
-
+   
+    next()
+})
+reviewSchema.pre(/^find/,function(next){
+    this.populate({
+        path:'tour',
+        select:'name id imageCover',
+    })
+    
+   
     next()
 })
 
