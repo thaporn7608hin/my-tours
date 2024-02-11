@@ -14,7 +14,7 @@ const signToken = id => {
     return token
 }
 
-const createSentToken = (user,statusCode,res,req) => {
+const createSentToken = (user,statusCode,res,req,isAcc) => {
     const token = signToken(user.id)
 
     const cookieiOption = {
@@ -24,7 +24,9 @@ const createSentToken = (user,statusCode,res,req) => {
     }
 
 
-    res.cookie('jwt',token,cookieiOption)
+    if (isAcc === 'login'){
+        res.cookie('jwt',token,cookieiOption)
+    }
 
     user.password = undefined
 
@@ -38,10 +40,10 @@ const createSentToken = (user,statusCode,res,req) => {
 }
 
 exports.singup = catchAsync(async (req,res,next) => {
-    const newUser = await User.create(req.body)
+    const newUser = await User.create(req.body) 
     const url = `${req.protocol}://${req.get("host")}/me`
     await new Email(newUser,url).sendWelcome()
-    createSentToken(newUser,200,res,req)
+    createSentToken(newUser,200,res,req,"signup")
 })
 exports.login = catchAsync(async (req,res,next) => {
     const {email,password} = req.body
@@ -59,7 +61,7 @@ exports.login = catchAsync(async (req,res,next) => {
   }
 
 
-    createSentToken(user,200,res,req)
+    createSentToken(user,200,res,req,"login")
 })
 
 exports.logout = (req,res,next) => {

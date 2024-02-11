@@ -28,7 +28,7 @@ export const reviewTour = async (review,tour,rating) => {
     if (res.data.status === 'success'){
         Swal.fire({
             title: "<h1 style='font-size: 24px;'>Success</h1>",
-            html: "<div style='font-size: 18px;'>Login success fully</div>",
+            html: "<div style='font-size: 18px;'>Review success fully</div>",
             icon: "success",
             showConfirmButton:false,
             showCancelButton:false,
@@ -39,8 +39,8 @@ export const reviewTour = async (review,tour,rating) => {
     } else {
         update(review,rating,tour)
         Swal.fire({
-            title: "<h1 style='font-size: 24px;'>Update Success</h1>",
-            html: "<div style='font-size: 18px;'>Login success fully</div>",
+            title: "<h1 style='font-size: 24px;'>Success</h1>",
+            html: "<div style='font-size: 18px;'>Update success fully</div>",
             icon: "success",
             showConfirmButton:false,
             showCancelButton:false,

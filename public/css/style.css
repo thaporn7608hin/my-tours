@@ -804,11 +804,11 @@ body {
   margin-bottom: 0;
 }
 .main.my-tour{
-  padding: 4rem 4rem 0 4rem;
+  padding: 4rem 4rem 4rem 4rem;
 }
 .footer {
   background-color: #f7f7f7;
-  padding: 6rem 4rem 3rem 4rem;
+  padding: 6rem 4rem 3rem 4rem; 
   font-size: 1.4rem;
   display: grid;
   grid-template-columns: auto auto;
