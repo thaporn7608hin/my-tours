@@ -804,7 +804,7 @@ body {
   margin-bottom: 0;
 }
 .main.my-tour{
-  padding: 4rem 3rem;
+  padding: 4rem 4rem 0 4rem;
 }
 .footer {
   background-color: #f7f7f7;
@@ -1352,8 +1352,13 @@ body {
     height: auto;
     
   }
+  /* .main.mytour{
+    padding: 0;
+    background-color: red;
+  } */
   .user-view.mytour{
     background-color: #f7f7f7 !important;
+    min-height: 80vh;
   }
   .main.my-tour {
     padding: 1rem 1rem 0 1rem;
@@ -1639,8 +1644,8 @@ body {
 }
 
 .user-view__content {
-  padding-top: 6rem ;
-  padding-bottom: 1rem;
+  padding-top: 4.5rem ;
+  padding-bottom: 0rem;
   position: absolute;
   top: 0;
   left: 0;

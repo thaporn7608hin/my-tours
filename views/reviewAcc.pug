@@ -1,22 +1,44 @@
 extends base
 
+
+mixin navItem(link,text,icon,active)
+    li(class=`${active ? 'side-nav--active' : ''}`)
+        a(href=`${link}`)
+            svg
+                use(xlink:href=`img/icons.svg#icon-${icon}`)
+            | #{text}
+
 block content
-   main.main
-        .card-container
-            each v in review
-                .card
-                    .card__header
-                        .card__picture
-                            .card__picture-overlay &nbsp;
-                            img.card__picture-img(src=`/img/tours/${v.tour.imageCover}`, alt=`${v.tour.name}`)
-                        h3.heading-tertirary
-                            span= v.tour.name
-                    .reviews__card.con
-                        .reviews__avatar
-                            img.reviews__avatar-img(src=`/img/users/${v.user.photo}`, alt=`${v.user.name}`)
-                            h6.reviews__user= v.user.name
-                        p.reviews__text= v.review
-                        .reviews__rating
-                            each star in [1, 2, 3, 4, 5]
-                                svg.reviews__star(class=`reviews__star--${v.rating >= star ? 'active' : 'inactive'}`)
-                                    use(xlink:href='/img/icons.svg#icon-star')
+    main.main.mytour
+        .user-view.mytour
+            .position
+                input#menu-toggle(type="checkbox")
+                label.menu-button-container(for="menu-toggle")
+                    div.menu-button
+            nav.user-view__menu
+                ul.side-nav
+                    +navItem("/me","Settings","settings")
+                    +navItem("/my-tours","My bookings","briefcase")
+                    +navItem("/my-review","My reviews","star",true)
+                    +navItem("/my-bill","Billing","credit-card")
+            .user-view__content
+                .user-view__form-container.my-tour
+                    main.main.my-tour
+                        .card-container.mytour
+                            each v in review
+                                .card
+                                    .card__header
+                                        .card__picture
+                                            .card__picture-overlay &nbsp;
+                                            img.card__picture-img(src=`/img/tours/${v.tour.imageCover}`, alt=`${v.tour.name}`)
+                                        h3.heading-tertirary
+                                            span= v.tour.name
+                                    .reviews__card.con
+                                        .reviews__avatar
+                                            img.reviews__avatar-img(src=`/img/users/${v.user.photo}`, alt=`${v.user.name}`)
+                                            h6.reviews__user= v.user.name
+                                        p.reviews__text= v.review
+                                        .reviews__rating
+                                            each star in [1, 2, 3, 4, 5]
+                                                svg.reviews__star(class=`reviews__star--${v.rating >= star ? 'active' : 'inactive'}`)
+                                                    use(xlink:href='/img/icons.svg#icon-star')
